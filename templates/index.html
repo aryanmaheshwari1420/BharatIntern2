@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Add the necessary CSS and styling here -->
+</head>
+<body>
+    <div class="container">
+        <h1 style="justify-content: center; margin-left: 120px;">Model Prediction</h1>
+        <br>
+        {% if label is defined %}
+    <div class="predicted-label">
+        {% if label == 'setosa' %}
+            <h3 style="color: green">Predicted Species: Setosa</h3>
+        {% elif label == 'versicolor' %}
+            <h3 style="color: red">Predicted Species: Versicolor</h3>
+        {% else %}
+            <h3 style="color: blue">Predicted Species: Virginica</h3>
+        {% endif %}
+    </div>
+{% endif %}
+
+        <form class="form" action="/predict" method="post">
+            <!-- Add input fields for the features -->
+            <input type="text" name="feature1" placeholder="sepal length (cm)" step="0.01">
+            <input type="text" name="feature2" placeholder="sepal width (cm)" step="0.01">
+            <input type="text" name="feature3" placeholder="petal length (cm)" step="0.01">
+            <input type="text" name="feature4" placeholder="petal width (cm)" step="0.01">
+            <!-- Add more input fields for additional features -->
+
+            <div class="predict-btn">
+                <input type="submit" value="Predict" class="btn btn-block btn-light btn-lg">
+            </div>
+        </form>
+
+    </div>
+    <!-- Add the necessary JavaScript here -->
+</body>
+</html>
