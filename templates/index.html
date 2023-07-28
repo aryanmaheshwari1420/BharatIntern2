@@ -1,38 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Add the necessary CSS and styling here -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Model Prediction</title>
+    <!-- Add the Bootstrap CSS link (optional) -->
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://media.istockphoto.com/id/1183406603/photo/red-ros%C3%A9-and-white-wines-on-black-background-with-copy-space.webp?b=1&s=170667a&w=0&k=20&c=HGGo-K1SToz8fK9hoIExPnH-Iyyq7YIbmZHvhR8O_LA=');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            margin-top: 50px;
+            margin-left: 700px;
+            max-width: 600px;
+            height: 550px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .prediction {
+            grid-column: span 2;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .prediction h3 {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 35px;
+            text-align: right;
+        }
+        .form input {
+            margin: 5px 20px 14px;
+            padding: 5px; /* Add padding to the input fields */
+            border-radius: 10px;
+        }
+        .predict-btn {
+            grid-column: span 2; /* Span two columns to center the predict button */
+            text-align: center; /* Center the button text */
+        }
+        
+    </style>
 </head>
 <body>
     <div class="container">
         <h1 style="justify-content: center; margin-left: 120px;">Model Prediction</h1>
         <br>
         {% if label is defined %}
-    <div class="predicted-label">
-        {% if label == 'setosa' %}
-            <h3 style="color: green">Predicted Species: Setosa</h3>
-        {% elif label == 'versicolor' %}
-            <h3 style="color: red">Predicted Species: Versicolor</h3>
-        {% else %}
-            <h3 style="color: blue">Predicted Species: Virginica</h3>
+            {% if label == 'setosa' %}
+                <div class="prediction">
+                    <h3 style="color: green">Predicted Species: Setosa</h3>
+                </div>
+            {% elif label == 'versicolor' %}
+                <div class="prediction">
+                    <h3 style="color: red">Predicted Species: Versicolor</h3>
+                </div>
+            {% else  %}
+                <div class="prediction">
+                    <h3 style="color: blue">Predicted Species: Virginica</h3>
+                </div>
+            {% endif %}
         {% endif %}
-    </div>
-{% endif %}
 
         <form class="form" action="/predict" method="post">
             <!-- Add input fields for the features -->
-            <input type="text" name="feature1" placeholder="sepal length (cm)" step="0.01">
-            <input type="text" name="feature2" placeholder="sepal width (cm)" step="0.01">
-            <input type="text" name="feature3" placeholder="petal length (cm)" step="0.01">
-            <input type="text" name="feature4" placeholder="petal width (cm)" step="0.01">
+            <input type="text" name="feature1" placeholder="Sepal Length (cm)" step="0.01">
+            <input type="text" name="feature2" placeholder="Sepal Width (cm)" step="0.01">
+            <input type="text" name="feature3" placeholder="Petal Length (cm)" step="0.01">
+            <input type="text" name="feature4" placeholder="Petal Width (cm)" step="0.01">
             <!-- Add more input fields for additional features -->
 
             <div class="predict-btn">
                 <input type="submit" value="Predict" class="btn btn-block btn-light btn-lg">
             </div>
         </form>
-
     </div>
     <!-- Add the necessary JavaScript here -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
 </body>
 </html>
